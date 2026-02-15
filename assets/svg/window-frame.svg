@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" fill="none">
+  <defs>
+    <linearGradient id="frame" x1="220" y1="240" x2="980" y2="1260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="0.32" stop-color="#101010"/>
+      <stop offset="0.62" stop-color="#1b1b1b"/>
+      <stop offset="1" stop-color="#060606"/>
+    </linearGradient>
+    <linearGradient id="highlight" x1="240" y1="260" x2="940" y2="1240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="soft" x="-20" y="-20" width="1240" height="1540" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feOffset dy="10" result="off"/>
+      <feColorMatrix in="off" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <mask id="cut">
+      <rect width="1200" height="1500" fill="white"/>
+      <!-- transparent window opening -->
+      <rect x="270" y="230" width="660" height="1040" rx="34" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Outer frame (mask removes the opening so the center stays transparent) -->
+  <g filter="url(#soft)" mask="url(#cut)">
+    <rect x="180" y="140" width="840" height="1220" rx="46" fill="url(#frame)"/>
+    <rect x="200" y="160" width="800" height="1180" rx="42" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/>
+    <rect x="210" y="170" width="780" height="1160" rx="40" stroke="#000000" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M210 250 C300 190, 390 170, 520 170 L980 170 L980 240 C840 235, 670 260, 540 320 C430 372, 320 430, 210 520 Z" fill="url(#highlight)" opacity="0.95"/>
+  </g>
+
+  <!-- Inner bevel around the opening (still transparent inside) -->
+  <rect x="260" y="220" width="680" height="1060" rx="38" stroke="#ffffff" stroke-opacity="0.10" stroke-width="10"/>
+  <rect x="268" y="228" width="664" height="1044" rx="34" stroke="#000000" stroke-opacity="0.45" stroke-width="6"/>
+
+  <!-- Optional subtle mullion (vertical bar) -->
+  <g opacity="0.35">
+    <rect x="592" y="240" width="16" height="1020" rx="8" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="594" y="242" width="12" height="1016" rx="6" fill="#000000" fill-opacity="0.18"/>
+  </g>
+</svg>
